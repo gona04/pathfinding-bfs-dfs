@@ -7,7 +7,7 @@ export default function MazeGrid({ width = 10, height = 10 }) {
 
   useEffect(() => {
     generateMaze(width, height);
-  }, []);
+  }, [height, width]);
 
   // [1, 0] --- '1,0'
   function bfs(startNode) {
@@ -198,23 +198,21 @@ export default function MazeGrid({ width = 10, height = 10 }) {
   return (
     <div className="maze-grid">
       <div className="btn-group">
-        <button className="btn" onClick={refreshMaze}>
+        <button className={"btn"} onClick={() => refreshMaze()}>
           Refresh
         </button>
-        <button className="btn bfs" onClick={() => bfs([1, 0])}>
+        <button className={"btn bfs"} onClick={() => bfs([1, 0])}>
           BFS
         </button>
-        <button className="btn dfs" onClick={() => dfs([1, 0])}>
+        <button className={"btn dfs"} onClick={() => dfs([1, 0])}>
           DFS
         </button>
       </div>
-      <div className="maze">
+      <div className={"maze"}>
         {maze.map((row, rowIndex) => (
-          <div className="row" key={rowIndex}>
+          <div className="row">
             {row.map((cell, cellIndex) => (
-              <div className="cell" key={cellIndex}>
-                {cell}
-              </div>
+              <div className={`cell ${cell}`}></div>
             ))}
           </div>
         ))}
