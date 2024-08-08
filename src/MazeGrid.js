@@ -7,7 +7,7 @@ export default function MazeGrid({ width = 10, height = 10 }) {
 
   useEffect(() => {
     generateMaze(width, height);
-  }, [height, width, timeoutIds]);
+  }, []);
 
   // [1, 0] --- '1,0'
   function bfs(startNode) {
